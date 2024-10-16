@@ -1,0 +1,122 @@
+{
+  "name": "vitepress-theme-demoblock",
+  "version": "3.0.3",
+  "type": "module",
+  "description": "vitepress-theme-demoblock",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xinlei3166/vitepress-theme-demoblock"
+  },
+  "keywords": [
+    "vitepress",
+    "vue",
+    "theme",
+    "demoblock"
+  ],
+  "bugs": {
+    "url": "https://github.com/xinlei3166/vitepress-theme-demoblock/issues"
+  },
+  "homepage": "https://github.com/xinlei3166/vitepress-theme-demoblock#readme",
+  "author": "君惜",
+  "license": "MIT",
+  "bin": {
+    "vitepress-register-components": "bin/vitepress-register-components.js",
+    "vitepress-rc": "bin/vitepress-register-components.js"
+  },
+  "files": [
+    "bin",
+    "dist",
+    ".prettierrc"
+  ],
+  "main": "dist/node/index.mjs",
+  "types": "dist/node/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/node/index.d.ts",
+      "import": "./dist/node/index.mjs"
+    },
+    "./dist/*": "./dist/*"
+  },
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "simple-git-hooks",
+    "test": "vitest",
+    "watch-build": "chokidar 'src/**/*.ts' 'src/**/*.vue' -c 'pnpm run build'",
+    "build": "unbuild",
+    "stub": "unbuild --stub",
+    "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx,.vue",
+    "release": "yunque-release",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0"
+  },
+  "dependencies": {
+    "@floating-ui/vue": "^1.0.1",
+    "@mdit-vue/plugin-sfc": "^0.12.0",
+    "@vue/compiler-sfc": "^3.3.4",
+    "@vueuse/core": "^10.1.2",
+    "camelcase": "^7.0.1",
+    "globby": "^13.1.4",
+    "hash-sum": "^2.0.0",
+    "markdown-it": "^13.0.1",
+    "markdown-it-container": "^3.0.0",
+    "minimist": "^1.2.8",
+    "picocolors": "^1.0.0",
+    "prettier": "^2.8.8",
+    "remark": "^14.0.3",
+    "remark-directive": "^2.0.1",
+    "remark-frontmatter": "^4.0.1",
+    "remark-parse": "^10.0.2",
+    "remark-stringify": "^10.0.3",
+    "shiki": "^0.14.2",
+    "unified": "^10.1.2",
+    "unist-util-visit": "^4.1.2",
+    "vitepress": "^1.0.0-beta.3",
+    "vue": "^3.3.4",
+    "yaml": "^2.2.2"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.1",
+    "@types/hash-sum": "^1.0.0",
+    "@types/markdown-it": "^12.2.3",
+    "@types/minimist": "^1.2.2",
+    "@types/node": "^20.2.1",
+    "@types/prettier": "^2.7.2",
+    "@types/unist": "^2.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.59.6",
+    "@typescript-eslint/parser": "^5.59.6",
+    "@yunquejs/release": "^0.1.9",
+    "chokidar-cli": "^3.0.0",
+    "conventional-changelog-cli": "^2.2.2",
+    "eslint": "^8.40.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.13.0",
+    "lint-staged": "^13.2.2",
+    "npm-run-all": "^4.1.5",
+    "simple-git-hooks": "^2.8.1",
+    "tsx": "^3.12.7",
+    "typescript": "^5.0.4",
+    "unbuild": "^1.2.1",
+    "vite": "^4.3.9",
+    "vitest": "^0.31.1",
+    "vue-eslint-parser": "^9.3.0"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged --concurrent false",
+    "commit-msg": "pnpm exec tsx scripts/verifyCommit.ts $1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,vue}": [
+      "eslint --fix"
+    ]
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@algolia/client-search"
+      ]
+    }
+  }
+}
